@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "533191614316",
+    "project_id": "nextssenger",
+    "storage_bucket": "nextssenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533191614316:android:77bf10aa1c87352b02dd49",
+        "android_client_info": {
+          "package_name": "com.example.android.nextssenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533191614316-aqdifnd7ouhknd5tkcbqeetetda18cs4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUHxvmVUyb9b1mYtnT1me3wNlBWU1inU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533191614316-aqdifnd7ouhknd5tkcbqeetetda18cs4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
