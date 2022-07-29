@@ -1,6 +1,7 @@
-package com.example.android.nextssenger.architecture;
+package com.example.android.nextssenger.viewmodel;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -17,11 +18,11 @@ public class ResetPasswordViewModel extends ViewModel {
         auth = FirebaseAuth.getInstance();
     }
 
-    public MutableLiveData<String> getError() {
+    public LiveData<String> getError() {
         return error;
     }
 
-    public MutableLiveData<Boolean> getSuccess() {
+    public LiveData<Boolean> getSuccess() {
         return success;
     }
 

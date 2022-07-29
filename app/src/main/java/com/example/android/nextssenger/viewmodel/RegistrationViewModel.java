@@ -1,22 +1,27 @@
-package com.example.android.nextssenger.architecture;
+package com.example.android.nextssenger.viewmodel;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.android.nextssenger.pojo.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class LoginViewModel extends ViewModel {
-    FirebaseAuth auth;
-    MutableLiveData<FirebaseUser> user = new MutableLiveData<>();
-    MutableLiveData<String> error = new MutableLiveData<>();
+public class RegistrationViewModel extends ViewModel {
+    private FirebaseAuth auth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference usersReference;
+    private MutableLiveData<FirebaseUser> user = new MutableLiveData<>();
+    private MutableLiveData<String> error = new MutableLiveData<>();
 
-    public LoginViewModel() {
+    public RegistrationViewModel() {
         auth = FirebaseAuth.getInstance();
         auth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -26,6 +31,8 @@ public class LoginViewModel extends ViewModel {
                 }
             }
         });
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        usersReference = firebaseDatabase.getReference("Users");
     }
 
     public LiveData<FirebaseUser> getUser() {
@@ -36,10 +43,14 @@ public class LoginViewModel extends ViewModel {
         return error;
     }
 
-    public void login(String email, String password) {
-        auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+    public void register(String email, String password, String name, String lastName, int age) {
+        auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+                FirebaseUser firebaseUser = authResult.getUser();
+                if (firebaseUser.getUid() == null) return;
+                User user = new User(firebaseUser.getUid(), name, lastName, age, false);
+                usersReference.child(firebaseUser.getUid()).setValue(user);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
