@@ -90,7 +90,7 @@ public class ChatActivity extends AppCompatActivity {
         viewModel.getOtherUser().observe(this, new Observer<User>() {
             @Override
             public void onChanged(User user) {
-                textViewName.setText(String.format("%s %s", user.getName(), user.getLastName()));
+                textViewName.setText(String.format("%s", user.getName()));
                 int backgroundId = user.isOnline() ? R.drawable.circle_green : R.drawable.circle_red;
                 Drawable drawable = ContextCompat.getDrawable(ChatActivity.this, backgroundId);
                 onlineStatus.setBackground(drawable);

@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/other_message_bg"
         android:maxWidth="250dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Long long long long long long long long long long long long long long long long long" />
