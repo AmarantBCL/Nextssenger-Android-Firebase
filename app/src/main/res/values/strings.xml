@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Nextssenger</string>
+    <string name="logout">Logout</string>
 </resources>
