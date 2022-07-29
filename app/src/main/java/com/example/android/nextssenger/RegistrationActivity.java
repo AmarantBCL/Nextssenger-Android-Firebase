@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.android.nextssenger.architecture.RegistrationViewModel;
+import com.example.android.nextssenger.viewmodel.RegistrationViewModel;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegistrationActivity extends AppCompatActivity {

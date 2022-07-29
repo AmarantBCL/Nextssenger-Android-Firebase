@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.android.nextssenger.architecture.ResetPasswordViewModel;
+import com.example.android.nextssenger.viewmodel.ResetPasswordViewModel;
 
 public class ResetPasswordActivity extends AppCompatActivity {
     private static final String EXTRA_EMAIL = "email";

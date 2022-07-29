@@ -13,14 +13,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.nextssenger.adapters.UserAdapter;
-import com.example.android.nextssenger.architecture.UsersViewModel;
 import com.example.android.nextssenger.pojo.User;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.android.nextssenger.viewmodel.UsersViewModel;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class UsersActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -51,6 +48,12 @@ public class UsersActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+            }
+        });
+        viewModel.getUsers().observe(this, new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+                adapter.setUsers(users);
             }
         });
     }

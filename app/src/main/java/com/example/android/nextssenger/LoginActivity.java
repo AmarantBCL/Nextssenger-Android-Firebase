@@ -11,10 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.android.nextssenger.architecture.LoginViewModel;
+import com.example.android.nextssenger.viewmodel.LoginViewModel;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
