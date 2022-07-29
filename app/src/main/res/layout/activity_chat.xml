@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_users"
+    tools:context=".ChatActivity">
+
+    <TextView
+        android:id="@+id/tv_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Valera Kulish, 28" />
+
+    <View
+        android:id="@+id/online_status"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/circle_green"
+        app:layout_constraintBottom_toBottomOf="@id/tv_user_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_user_info" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_messages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/edit_type_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_info"
+        tools:listitem="@layout/my_message_list_item" />
+
+    <EditText
+        android:id="@+id/edit_type_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:hint="Type your message..."
+        android:inputType="textMultiLine"
+        android:paddingVertical="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="Long long long long long long long long long long long long long long long long long" />
+
+    <ImageView
+        android:id="@+id/img_send_message"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@id/edit_type_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/edit_type_message"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        app:tint="@color/purple_500" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
