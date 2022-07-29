@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_users">#11000099</color>
+    <color name="pale_green">#8898FB98</color>
 </resources>
