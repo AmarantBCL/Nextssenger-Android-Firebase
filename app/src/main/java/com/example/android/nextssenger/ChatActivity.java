@@ -1,12 +1,14 @@
 package com.example.android.nextssenger;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +30,7 @@ public class ChatActivity extends AppCompatActivity {
     private static final String EXTRA_OTHER_USER_ID = "otherUserId";
 
     private TextView textViewName;
-    private View textViewStatus;
+    private View onlineStatus;
     private RecyclerView recyclerViewMessages;
     private EditText editTextTypeMessage;
     private ImageView imageViewSend;
@@ -89,13 +91,16 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onChanged(User user) {
                 textViewName.setText(String.format("%s %s", user.getName(), user.getLastName()));
+                int backgroundId = user.isOnline() ? R.drawable.circle_green : R.drawable.circle_red;
+                Drawable drawable = ContextCompat.getDrawable(ChatActivity.this, backgroundId);
+                onlineStatus.setBackground(drawable);
             }
         });
     }
 
     private void initViews() {
         textViewName = findViewById(R.id.tv_user_info);
-        textViewStatus = findViewById(R.id.online_status);
+        onlineStatus = findViewById(R.id.online_status);
         imageViewSend = findViewById(R.id.img_send_message);
         editTextTypeMessage = findViewById(R.id.edit_type_message);
         recyclerViewMessages = findViewById(R.id.recycler_view_messages);
@@ -108,5 +113,17 @@ public class ChatActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_CURRENT_USER_ID, currentUserId);
         intent.putExtra(EXTRA_OTHER_USER_ID, otherUserId);
         return intent;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        viewModel.setUserOnline(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        viewModel.setUserOnline(false);
     }
 }

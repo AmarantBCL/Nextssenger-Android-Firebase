@@ -29,7 +29,7 @@ public class UsersViewModel extends ViewModel {
         auth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                user.setValue(auth.getCurrentUser());
+                user.setValue(firebaseAuth.getCurrentUser());
             }
         });
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -67,5 +67,11 @@ public class UsersViewModel extends ViewModel {
 
     public void logout() {
         auth.signOut();
+    }
+
+    public void setUserOnline(boolean isOnline) {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        if (firebaseUser == null) return;
+        usersReference.child(firebaseUser.getUid()).child("online").setValue(isOnline);
     }
 }
