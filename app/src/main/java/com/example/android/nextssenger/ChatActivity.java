@@ -69,6 +69,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Message> messages) {
                 adapter.setMessages(messages);
+                recyclerViewMessages.smoothScrollToPosition(messages.size() - 1);
             }
         });
         viewModel.getError().observe(this, new Observer<String>() {
