@@ -44,7 +44,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = users.get(position);
-        String userInfo = String.format("%s %s, %s", user.getName(), user.getLastName(), user.getAge());
+        String userInfo = String.format("%s, %s", user.getName(), user.getAge());
         holder.textViewUser.setText(userInfo);
         int backgroundId = user.isOnline() ? R.drawable.circle_green : R.drawable.circle_red;
         Drawable drawable = ContextCompat.getDrawable(holder.itemView.getContext(), backgroundId);
